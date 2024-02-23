@@ -1,0 +1,27 @@
+<button class="btn btn-primary py-3 px-4" routerLink="upsert" style="margin-left: 7rem; margin-top: 2rem;">Signup Form</button>
+
+<div class="container-fluid my-5">
+    <table class="table table-striped text-center">
+        <thead>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone No.</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of userData">
+                <td> {{data.firstname + " " + data.lastname}} </td>
+                <td> {{data.email}} </td>
+                <td> {{data.phone}} </td>
+                <td>
+                    <button class="me-2 btn btn-warning" (click)="editDetails(data)"> 
+                        <i class="bi bi-pencil-fill"></i> 
+                    </button>
+                    <button class="btn btn-danger" (click)="deleteDetails(data)"> 
+                        <i class="bi bi-trash3-fill"></i> 
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

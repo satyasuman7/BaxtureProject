@@ -1,0 +1,94 @@
+<div class="container my-5">
+    <!--Data or Content-->
+    <div class="box-1">
+        <div class="content-holder">
+            <h2 class="m-4">Signup Form</h2> 
+        </div>
+    </div>
+
+    
+    <!--Forms-->
+    <div class="box-2 p-5">
+        <form [formGroup]="baxtureForm">
+            <!-- FIRSTNAME details starts -->
+            <div class="mb-3">
+                <input  type="text" class="form-control p-2" placeholder="First Name" formControlName="firstname">
+                <div class="mt-2" *ngIf="error['firstname'].touched && error['firstname'].invalid">
+                    <div *ngIf="error['firstname'].errors && error['firstname'].errors['required']" class="alert alert-danger">
+                        First-Name is required.
+                    </div>
+                    <div *ngIf="error['firstname'].errors && error['firstname'].errors['maxlength']" class="alert alert-warning">
+                        First-Name should be 15 character.
+                    </div>
+                    <div *ngIf="error['firstname'].errors && error['firstname'].errors['minlength']" class="alert alert-warning">
+                        First-Name not valid
+                    </div>
+                </div>
+            </div>
+            <!-- FIRSTNAME details ends -->
+
+             <!-- LASTNAME details starts -->
+             <div class="mb-3">
+                <input  type="text" class="form-control p-2" placeholder="Last Name" formControlName="lastname">
+                <div class="mt-2" *ngIf="error['lastname'].touched && error['lastname'].invalid">
+                    <div *ngIf="error['lastname'].errors && error['lastname'].errors['required']" class="alert alert-danger">
+                        Last-Name is required.
+                    </div>
+                    <div *ngIf="error['lastname'].errors && error['lastname'].errors['maxlength']" class="alert alert-warning">
+                        Last-Name should be 15 character.
+                    </div>
+                    <div *ngIf="error['lastname'].errors && error['lastname'].errors['minlength']" class="alert alert-warning">
+                        Last-Name not valid
+                    </div>
+                </div>
+            </div>
+            <!-- LASTNAME details ends -->
+
+             <!-- ADDRESS details starts -->
+             <div class="mb-3">
+                <input type="text" placeholder="Address" class="form-control" formControlName="address">
+                <div class="mt-2" *ngIf="error['address'].touched && error['address'].invalid">
+                    <div *ngIf="error['address'].errors && error['address'].errors['required']" class="alert alert-danger">
+                        Address is Required !!
+                    </div>
+                </div>
+            </div>
+            <!-- ADDRESS details ends -->
+    
+            <!-- EMAIL-ADDRESS details starts -->
+            <div class="mb-3">
+                <input type="text" class="form-control p-2" placeholder="Email" formControlName="email">
+                <div class="mt-2" *ngIf="error['email'].touched && error['email'].invalid">
+                    <div *ngIf="error['email'].errors && error['email'].errors['required']" class="alert alert-danger">
+                        Email is required.
+                    </div>
+                    <div *ngIf="error['email'].errors && error['email'].errors['email']" class="alert alert-warning">
+                        Please, enter valid email address.
+                    </div>
+                </div>
+            </div>
+            <!-- EMAIL-ADDRESS details ends -->
+    
+            <!-- PHONE/NUMBER details starts -->
+            <div class="row mb-3">
+                <div class="col-md-10">
+                    <input type="text" class="form-control p-2" placeholder="Phone Number" formControlName="phone" >
+                    <div class="mt-2" *ngIf="error['phone'].touched && error['phone'].invalid">
+                        <div *ngIf="error['phone'].errors && error['phone'].errors['required']" class="alert alert-danger">
+                            Phone No. is required.
+                        </div>
+                        <div *ngIf="error['phone'].errors && (error['phone'].errors['maxlength'] || error['phone'].errors['minlength'])" class="alert alert-warning">
+                            Phone No. is not valid.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- PHONE/NUMBER details ends -->
+
+            <button type="submit" class="btn btn-outline-success py-3 px-4" (click)="onSubmit()" [disabled]="baxtureForm.invalid">
+                {{ isUpdateMode ? 'Update' : 'Submit' }}
+            </button>
+        </form>
+    </div>
+</div>
